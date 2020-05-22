@@ -79,25 +79,3 @@ public:
 		return new Ferry(*this);
 	}
 };
-
-
-
-class ShipFactory
-{
-public:
-	ShipFactory()
-	{
-		ships["Warship"] = new WarShip("ManO'War", 32, 43, 17);
-		ships["Cruise"] = new Cruise("Cruise", 27, 73, 10);
-		ships["Ferry"] = new Ferry("RideBackHome", 12, 13, 13);
-	}
-
-	IShipPrototype* CreateCloneShip(std::string idx)
-	{
-		return ships[idx]->clone();
-	}
-
-private:
-	std::map<std::string, IShipPrototype*> ships;
-
-};

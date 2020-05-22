@@ -3,7 +3,13 @@
 
 int main()
 {
-	ShipFactory *factory = new ShipFactory();
+	std::map<std::string, IShipPrototype*> ships;
+
+	ships["Warship"] = new WarShip("ManO'War", 32, 43, 17);
+	ships["Cruise"] = new Cruise("Cruise", 27, 73, 10);
+	ships["Ferry"] = new Ferry("RideBackHome", 12, 13, 13);
+
+
 	int ans = -1;
 	while (true)
 	{
@@ -14,21 +20,21 @@ int main()
 
 		if (ans == 1)
 		{
-			currentShip = factory->CreateCloneShip("Warship");
+			currentShip = ships["Warship"]->clone();
 			currentShip->SetShipName("WarshipClone");
 			currentShip->Print();
 			std::cout << "\n\n";
 		}
 		else if (ans == 2)
 		{
-			currentShip = factory->CreateCloneShip("Cruise");
+			currentShip = ships["Cruise"]->clone();
 			currentShip->SetShipName("CruiseClone");
 			currentShip->Print();
 			std::cout << "\n\n";
 		}
 		else if (ans == 3)
 		{
-			currentShip = factory->CreateCloneShip("Ferry");
+			currentShip = ships["Ferry"]->clone();
 			currentShip->SetShipName("FerryClone");
 			currentShip->Print();
 			std::cout << "\n\n";
